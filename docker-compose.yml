@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  enid_bot:
+    build: .
+    image: 'enid_bot:1'
+    container_name: 'enid_bot'
+    command:
+      sh -c "cd src && poetry run python autoreload.py"
+    env_file: .env
+    volumes:
+      - ./src:/service/src
+      - ./tests:/service/tests
+    tty: true
+    stdin_open: true
+    restart: unless-stopped
