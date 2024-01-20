@@ -5,7 +5,8 @@ services:
     image: 'enid_bot:1'
     container_name: 'enid_bot'
     command:
-      sh -c "cd src && poetry run python autoreload.py"
+      sh -c "cd src && 
+             poetry run watchmedo auto-restart --directory=. --recursive -- python main.py"
     env_file: .env
     volumes:
       - ./src:/service/src
