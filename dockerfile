@@ -14,6 +14,7 @@ WORKDIR /service/
 
 COPY poetry.lock .
 COPY pyproject.toml .
+COPY setup.cfg .
 
 RUN poetry install --no-root && rm -rf $POETRY_CACHE_DIR
 

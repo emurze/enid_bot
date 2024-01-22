@@ -1,4 +1,4 @@
-from handlers.hero import parser
+from handlers.person import parser
 from helpers.tasks import create_cpu_task
 
 

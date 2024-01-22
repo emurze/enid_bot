@@ -11,6 +11,30 @@ services:
     volumes:
       - ./src:/service/src
       - ./tests:/service/tests
+    networks:
+      - backend
     tty: true
     stdin_open: true
     restart: unless-stopped
+    depends_on:
+      - chrome
+
+  chrome:
+    image: selenium/standalone-chrome:latest
+    container_name: 'chrome'
+    environment:
+      - SE_OVERRIDE_MAX_SESSIONS=true
+      - SE_MAX_SESSIONS=5
+      - SE_NODE_OVERRIDE_MAX_SESSIONS=true
+      - SE_NODE_MAX_SESSIONS=5
+    networks:
+      - backend
+    ports:
+      - '4444:4444'
+      - '7900:7900'
+    privileged: true
+    shm_size: 2g
+    restart: unless-stopped
+
+networks:
+  backend:

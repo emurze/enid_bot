@@ -2,12 +2,12 @@ from aiogram.types import Message, ReplyKeyboardMarkup, KeyboardButton
 
 
 async def start_handler(message: Message) -> None:
-    button_hero = KeyboardButton(text='/hero')
-    button_katz = KeyboardButton(text='/katz')
+    button_person = KeyboardButton(text='/person')
+    button_proponent = KeyboardButton(text='/proponent')
 
     keyboard = ReplyKeyboardMarkup(
-        keyboard=[[button_hero, button_katz]],
+        keyboard=[[button_person, button_proponent]],
         resize_keyboard=True
     )
 
-    await message.answer("Hello bro", reply_markup=keyboard)
+    await message.answer("Dashboard", reply_markup=keyboard)

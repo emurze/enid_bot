@@ -2,14 +2,14 @@ import asyncio
 
 from aiogram.types import Message
 
-from handlers.hero import parser
-from handlers.hero.constants import URL
+from handlers.person import parser
+from handlers.person.constants import URL
 from helpers.tasks import create_cpu_task
-from helpers.web import make_text_from_url
+from helpers.web import make_request
 
 
-async def hero_handler(message: Message) -> None:
-    response = await make_text_from_url(URL)
+async def person_handler(message: Message) -> None:
+    response = await make_request(URL)
 
     async with asyncio.TaskGroup() as tg:
         collected_signatures = tg.create_task(

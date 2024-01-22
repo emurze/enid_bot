@@ -1,4 +1,3 @@
-from aiohttp import ClientResponse
 from bs4 import BeautifulSoup
 
 
